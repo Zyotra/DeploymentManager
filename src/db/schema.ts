@@ -1,5 +1,4 @@
-import { integer } from "drizzle-orm/gel-core";
-import { pgTable, serial, text, timestamp, varchar } from "drizzle-orm/pg-core";
+import { integer, pgTable, serial, text, timestamp, varchar } from "drizzle-orm/pg-core";
 
 export const vpsMachines = pgTable("vps_machines", {
     id: serial("id").primaryKey(),
@@ -7,7 +6,6 @@ export const vpsMachines = pgTable("vps_machines", {
     vps_name: varchar("vps_name", { length: 100 }).notNull(),
     vps_password: text("vps_password").notNull(),
     ownerId: integer("owner").notNull(),
-    ownerEmail: varchar("owner_email", { length: 150 }).notNull(),
     ssh_key: text("ssh_key"),
     expiryDate: timestamp("expiry_date").notNull(),
     added_at: timestamp("added_at").defaultNow().notNull(),

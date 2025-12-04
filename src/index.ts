@@ -7,9 +7,11 @@ const app = new Elysia()
 
 routes.forEach(route => {
   route.isProtected ?
-    new Elysia()
-      .use(checkAuthPlugin)
-      .route(route.method, route.path, route.handler)
+    app.use(
+      new Elysia()
+        .use(checkAuthPlugin)
+        .route(route.method, route.path, route.handler)
+    )
     :
     app.route(route.method, route.path, route.handler)
 })

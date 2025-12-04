@@ -3,8 +3,10 @@ import { StatusCode } from "../types/types";
 import { vpsMachines } from "../db/schema";
 import { eq } from "drizzle-orm";
 import { db } from "../db/client";
+import { enc } from "crypto-js";
+import encryptVpsPassword from "../crypto/encryptVpsPassword";
 
-const updateMachine=async({ set, body,params }: Context)=>{
+const updateMachine=async({ set, body,params,user }: Context | any)=>{
     const vps_Id=params.id;
     const req=body as {
         newVpsPassword?:string,
@@ -31,9 +33,10 @@ const updateMachine=async({ set, body,params }: Context)=>{
             message:"Machine not found"
         }
     }
+    const encryptedPassword:string=encryptVpsPassword(req.newVpsPassword);
     try {
         const updatedMachine=await db.update(vpsMachines).set({
-            vps_password:req.newVpsPassword
+            vps_password: encryptedPassword
         }).where(eq(vpsMachines.id,parseInt(vps_Id)));
         set.status=StatusCode.OK;
         return {

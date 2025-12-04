@@ -5,7 +5,7 @@ const encryptVpsPassword = (password: string): string => {
         throw new Error("Encryption algorithm not specified in environment variables");
     }
     //@ts-ignore
-    const encrypted = CryptoJS.encriptionAlgorithm.encrypt(password, process.env.VPS_ENCRYPTION_KEY as string).toString();
+    const encrypted = CryptoJS[encriptionAlgorithm].encrypt(password, process.env.ENCRYPTION_KEY as string).toString();
     return encrypted;
 }
 export default encryptVpsPassword;

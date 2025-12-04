@@ -4,7 +4,7 @@ import { db } from "../db/client";
 import { vpsMachines } from "../db/schema";
 import encryptVpsPassword from "../crypto/encryptVpsPassword";
 
-const addMachine = async ({ set, body, user }: Context | any) => {
+const addMachine = async ({ set, body, userId }: Context | any) => {
     const req = body as {
         vpsIP: string,
         vpsName: string,
@@ -12,7 +12,7 @@ const addMachine = async ({ set, body, user }: Context | any) => {
         sshKey?: string
         expiryDate: string
     }
-    if(!user || !user.id || !user.email){
+    if(!userId){
         set.status = StatusCode.UNAUTHORIZED;
         return {
             status: "error",
@@ -37,8 +37,7 @@ const addMachine = async ({ set, body, user }: Context | any) => {
             vps_ip: req.vpsIP,
             vps_name: req.vpsName,
             vps_password: encryptedPassword,
-            ownerId: user.id,
-            ownerEmail: user.email,
+            ownerId: userId,
             ssh_key: encryptedSSHKey,
             expiryDate: new Date(req.expiryDate)
         }).returning();

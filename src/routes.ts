@@ -20,12 +20,12 @@ const routes: apiRoute[] = [
         path: "/add-machine",
         method: 'post',
         handler: addMachine,
-        isProtected: false
+        isProtected: true
     },{
         path: "/update-machine/:id",
         method: 'put',
         handler: updateMachine,
-        isProtected: false
+        isProtected: true
     }
 ]
 export default routes;
