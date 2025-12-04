@@ -1,0 +1,1 @@
+ALTER TABLE "vps_machines" ADD COLUMN "owner_email" varchar(150) NOT NULL;
