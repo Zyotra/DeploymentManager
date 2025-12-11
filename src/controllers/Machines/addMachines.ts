@@ -1,8 +1,8 @@
 import { Context } from "elysia";
-import { StatusCode } from "../types/types";
-import { db } from "../db/client";
-import { vpsMachines } from "../db/schema";
-import encryptVpsPassword from "../crypto/encryptVpsPassword";
+import { StatusCode } from "../../types/types";
+import { db } from "../../db/client";
+import { vpsMachines } from "../../db/schema";
+import encryptVpsPassword from "../../crypto/encryptVpsPassword";
 
 const addMachine = async ({ set, body, userId }: Context | any) => {
     const req = body as {

@@ -1,9 +1,9 @@
 import { Context } from "elysia";
-import { StatusCode } from "../types/types";
-import { vpsMachines } from "../db/schema";
+import { StatusCode } from "../../types/types";
+import { vpsMachines } from "../../db/schema";
 import { eq } from "drizzle-orm";
-import { db } from "../db/client";
-import encryptVpsPassword from "../crypto/encryptVpsPassword";
+import { db } from "../../db/client";
+import encryptVpsPassword from "../../crypto/encryptVpsPassword";
 
 const updateMachine = async ({ set, body, params, user }: Context | any) => {
     const vps_Id = params.id;

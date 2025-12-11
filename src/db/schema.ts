@@ -11,3 +11,12 @@ export const vpsMachines = pgTable("vps_machines", {
     added_at: timestamp("added_at").defaultNow().notNull(),
     updated_at: timestamp("updated_at").defaultNow().notNull()
 })
+
+export const userDomains=pgTable("user_domains",{
+    id:serial("id").primaryKey(),
+    domain_name:varchar("domain_name",{length:255}).notNull(),
+    domain_address:varchar("domain_address",{length:255}).notNull(),
+    vps_ip:varchar("vps_ip",{length:100}).notNull(),
+    ownerId:integer("owner").notNull(),
+    added_at: timestamp("added_at").defaultNow().notNull()
+});
