@@ -2,9 +2,14 @@ import { Elysia } from "elysia";
 import routes from "./routes";
 import { config } from "dotenv";
 import checkAuthPlugin from "./middlewares/checkAuth";
+import cors from "@elysiajs/cors";
 config();
 const app = new Elysia()
-
+app.use(cors({
+  origin: "http://localhost:5173",
+  methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
+  allowedHeaders: ["Content-Type", "Authorization"]
+}))
 routes.forEach(route => {
   route.isProtected ?
     app.use(

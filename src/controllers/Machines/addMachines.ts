@@ -9,7 +9,11 @@ const addMachine = async ({ set, body, userId }: Context | any) => {
         vpsIP: string,
         vpsName: string,
         vpsPassword: string,
-        sshKey?: string
+        sshKey?: string,
+        ram: number,
+        cpuCores: number,
+        storage: number,
+        region: string,
         expiryDate: string
     }
     if(!userId){
@@ -38,6 +42,9 @@ const addMachine = async ({ set, body, userId }: Context | any) => {
             vps_name: req.vpsName,
             vps_password: encryptedPassword,
             ownerId: userId,
+            ram: req.ram,
+            storage: req.storage,
+            cpu_cores: req.cpuCores,
             ssh_key: encryptedSSHKey,
             expiryDate: new Date(req.expiryDate)
         }).returning();

@@ -11,6 +11,7 @@ const getMachines=async({userId,set}:Context | any)=>{
             message:"Unauthorized. No user is associated with the request"
         }
     }
+    console.log("Fetching machines for user:", userId);
     const machines=await db.select().from(vpsMachines).where(eq(vpsMachines.ownerId,userId));
     set.status=StatusCode.OK;
     return {

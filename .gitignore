@@ -4,13 +4,14 @@
 /node_modules
 /.pnp
 .pnp.js
-
+/.env
 # testing
 /coverage
 
 # next.js
 /.next/
 /out/
+/.env
 
 # production
 /build
@@ -18,6 +19,9 @@
 # misc
 .DS_Store
 *.pem
+
+.env
+**/.env
 
 # debug
 npm-debug.log*

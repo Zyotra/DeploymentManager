@@ -22,7 +22,8 @@ const deleteMachine = async ({ set, params, userId }: Context | any) => {
                 message: "Machine not found"
             }
         }
-        if (machineExists[0].ownerId !== userId) {
+       
+        if (machineExists[0].owner != userId) {
             set.status = StatusCode.UNAUTHORIZED;
             return {
                 status: "error",

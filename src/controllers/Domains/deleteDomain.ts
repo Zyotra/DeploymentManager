@@ -20,7 +20,10 @@ const deleteDomain=async({params,set,userId}:Context | any)=>{
             message:"Domain not found"
         }
     }
-    if(domainExists[0].ownerId!==userId){
+    console.log(domainExists[0].ownerId);
+    console.log(userId);
+    // Check if the domain belongs to the user
+    if(domainExists[0].ownerId!=userId){
         set.status=StatusCode.UNAUTHORIZED;
         return {
             status:"error",

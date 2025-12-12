@@ -14,13 +14,6 @@ const getDomains = async ({ userId, set }: Context | any) => {
     }
     try {
         const domains = await db.select().from(userDomains).where(eq(userDomains.ownerId, userId))
-        if (domains.length === 0) {
-            set.status = StatusCode.NOT_FOUND;
-            return {
-                status: "error",
-                message: "No domains found for this user"
-            }
-        }
         set.status = StatusCode.OK;
         return {
             status: "success",

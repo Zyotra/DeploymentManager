@@ -5,8 +5,11 @@ export const vpsMachines = pgTable("vps_machines", {
     vps_ip: varchar("vps_ip", { length: 100 }).notNull(),
     vps_name: varchar("vps_name", { length: 100 }).notNull(),
     vps_password: text("vps_password").notNull(),
-    ownerId: integer("owner").notNull(),
+    ownerId: integer("ownerId").notNull(),
     ssh_key: text("ssh_key"),
+    ram: integer("ram").notNull(),
+    storage: integer("storage").notNull(),
+    cpu_cores: integer("cpu_cores").notNull(),
     expiryDate: timestamp("expiry_date").notNull(),
     added_at: timestamp("added_at").defaultNow().notNull(),
     updated_at: timestamp("updated_at").defaultNow().notNull()
@@ -14,9 +17,9 @@ export const vpsMachines = pgTable("vps_machines", {
 
 export const userDomains=pgTable("user_domains",{
     id:serial("id").primaryKey(),
-    domain_name:varchar("domain_name",{length:255}).notNull(),
     domain_address:varchar("domain_address",{length:255}).notNull(),
     vps_ip:varchar("vps_ip",{length:100}).notNull(),
     ownerId:integer("owner").notNull(),
+    isDeployed:integer("is_deployed").default(0).notNull(),
     added_at: timestamp("added_at").defaultNow().notNull()
 });

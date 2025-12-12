@@ -5,11 +5,10 @@ import { db } from "../../db/client";
 
 const addNewDomain=async({body,set,userId}:Context | any)=>{
     const req=body as {
-        domainName:string,
         domainAddress:string,
         vpsIp:string
     };
-    if(!req.domainName || !req.vpsIp){
+    if(!req.domainAddress || !req.vpsIp){
         set.status=400;
         return {
             status:"error",
@@ -18,7 +17,6 @@ const addNewDomain=async({body,set,userId}:Context | any)=>{
     }
     try {
         const newDomain=await db.insert(userDomains).values({
-            domain_name:req.domainName,
             domain_address:req.domainAddress,
             vps_ip:req.vpsIp,
             ownerId:userId
