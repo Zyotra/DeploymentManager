@@ -7,6 +7,7 @@ import deleteDomain from "./controllers/Domains/deleteDomain";
 import deleteMachine from "./controllers/Machines/deleteMachine";
 import addNewDomain from "./controllers/Domains/addNewDomain";
 import getDomains from "./controllers/Domains/getDomains";
+import viewDetails from "./controllers/Machines/viewDetails";
 
 const routes: apiRoute[] = [
     {
@@ -57,6 +58,11 @@ const routes: apiRoute[] = [
         method: 'delete',
         handler: deleteDomain,
         isProtected: true
+    },{
+        path:"/get-machine-analytics/:id",
+        method:'get',
+        handler:viewDetails,
+        isProtected:true
     }
 ]
 export default routes;

@@ -9,13 +9,15 @@
     "@elysiajs/cors": "^1.4.0",
     "@types/crypto-js": "^4.2.2",
     "@types/jsonwebtoken": "^9.0.10",
+    "@types/ssh2": "^1.15.5",
     "crypto-js": "^4.2.0",
     "dotenv": "^17.2.3",
     "drizzle-kit": "^0.31.7",
     "drizzle-orm": "^0.44.7",
     "elysia": "latest",
     "jsonwebtoken": "^9.0.3",
-    "postgres": "^3.4.7"
+    "postgres": "^3.4.7",
+    "ssh2": "^1.17.0"
   },
   "devDependencies": {
     "bun-types": "latest"
