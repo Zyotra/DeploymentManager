@@ -30,6 +30,13 @@ const deleteDomain=async({params,set,userId}:Context | any)=>{
             message:"Unauthorized to delete this domain"
         }
     }
+    if(domainExists[0].isDeployed){
+        set.status=StatusCode.FORBIDDEN;
+        return {
+            status:"error",
+            message:"Cannot delete a deployed domain. Please undeploy it first."
+        }
+    }
     try {
         await db.delete(userDomains).where(eq(userDomains.id,parseInt(domainId)));
         set.status=StatusCode.OK;
