@@ -4,7 +4,10 @@
   "type": "module",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "bun run --watch src/index.ts"
+    "dev": "bun run --watch src/index.ts",
+    "generate":"bun x drizzle-kit generate",
+    "migrate":"bun x drizzle-kit migrate",
+    "build":"bun run generate && bun run migrate && bun build src/index.ts --outdir dist --target=bun"
   },
   "dependencies": {
     "@elysiajs/cors": "^1.4.0",
