@@ -6,7 +6,7 @@ import cors from "@elysiajs/cors";
 config();
 const app = new Elysia()
 app.use(cors({
-  origin: ["http://localhost:5173","https://zyotraportal.ramkrishna.cloud"],
+  origin: "https://zyotraportal.ramkrishna.cloud",
   methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
   credentials:true,
   allowedHeaders: ["Content-Type", "Authorization"]
