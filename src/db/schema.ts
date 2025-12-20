@@ -23,3 +23,10 @@ export const userDomains=pgTable("user_domains",{
     isDeployed:integer("is_deployed").default(0).notNull(),
     added_at: timestamp("added_at").defaultNow().notNull()
 });
+
+export const githubAuths=pgTable("github_auths",{
+    id:serial("id").primaryKey(),
+    vpsId:integer("vps_id").notNull(),
+    github_username:varchar("github_username",{length:100}).notNull(),
+    added_at: timestamp("added_at").defaultNow().notNull()
+});

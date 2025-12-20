@@ -8,6 +8,8 @@ import deleteMachine from "./controllers/Machines/deleteMachine";
 import addNewDomain from "./controllers/Domains/addNewDomain";
 import getDomains from "./controllers/Domains/getDomains";
 import viewDetails from "./controllers/Machines/viewDetails";
+import authenticateGithubController from "./controllers/authenticateGithubController";
+import unauthenticateGithubController from "./controllers/unauthenticateGithubController";
 
 const routes: apiRoute[] = [
     {
@@ -62,6 +64,16 @@ const routes: apiRoute[] = [
         path:"/get-machine-analytics/:id",
         method:'get',
         handler:viewDetails,
+        isProtected:true
+    },{
+        path:"/authenticate-github/:id",
+        method:'get',
+        handler:authenticateGithubController,
+        isProtected:true
+    },{
+        path:"/unauthenticate-github/:id",
+        method:'get',
+        handler:unauthenticateGithubController,
         isProtected:true
     }
 ]
