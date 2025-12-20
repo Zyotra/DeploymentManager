@@ -8,8 +8,9 @@ import deleteMachine from "./controllers/Machines/deleteMachine";
 import addNewDomain from "./controllers/Domains/addNewDomain";
 import getDomains from "./controllers/Domains/getDomains";
 import viewDetails from "./controllers/Machines/viewDetails";
-import authenticateGithubController from "./controllers/authenticateGithubController";
-import unauthenticateGithubController from "./controllers/unauthenticateGithubController";
+import authenticateGithubController from "./controllers/Github/authenticateGithubController";
+import unauthenticateGithubController from "./controllers/Github/unauthenticateGithubController";
+import getGithubStatusController from "./controllers/Github/getGithubStatusController";
 
 const routes: apiRoute[] = [
     {
@@ -74,6 +75,11 @@ const routes: apiRoute[] = [
         path:"/unauthenticate-github/:id",
         method:'get',
         handler:unauthenticateGithubController,
+        isProtected:true
+    },{
+        path:"get-github-auths/:id",
+        method:'get',
+        handler:getGithubStatusController,
         isProtected:true
     }
 ]

@@ -1,9 +1,9 @@
 import { Context } from "elysia";
-import { StatusCode } from "../types/types";
-import SSHClient from "../SSHClient/SSHClient";
-import decryptVpsPassword from "../crypto/decryptVpsPassword";
-import { db } from "../db/client";
-import { githubAuths, vpsMachines } from "../db/schema";
+import { StatusCode } from "../../types/types";
+import SSHClient from "../../SSHClient/SSHClient";
+import decryptVpsPassword from "../../crypto/decryptVpsPassword";
+import { db } from "../../db/client";
+import { githubAuths, vpsMachines } from "../../db/schema";
 import { and, eq } from "drizzle-orm";
 
 const unauthenticateGithubController = async ({params,userId,set}:Context | any) => {

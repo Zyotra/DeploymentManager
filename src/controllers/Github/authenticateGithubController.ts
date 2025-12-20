@@ -1,10 +1,10 @@
 import { Context } from "elysia";
-import { StatusCode } from "../types/types";
-import { db } from "../db/client";
+import { StatusCode } from "../../types/types";
+import { db } from "../../db/client";
 import { and, eq } from "drizzle-orm";
-import { githubAuths, vpsMachines } from "../db/schema";
-import SSHClient from "../SSHClient/SSHClient";
-import decryptVpsPassword from "../crypto/decryptVpsPassword";
+import { githubAuths, vpsMachines } from "../../db/schema";
+import SSHClient from "../../SSHClient/SSHClient";
+import decryptVpsPassword from "../../crypto/decryptVpsPassword";
 const authenticateGithubController = async ({body,params,userId,set}:Context | any) => {
     const vpsId=params.id;
     const req=body as {
