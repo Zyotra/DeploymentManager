@@ -38,12 +38,15 @@ const authenticateGithubController = async ({body,params,userId,set}:Context | a
             password:encryptedPassword
         });
         await ssh.connect();
-        const commands=[
-            `sudo apt install -y git`,
+        const commands = [
+            `sudo apt install -y git curl`,
+            // Validate token AND verify username
+            `curl -f -s -H "Authorization: token ${token}" https://api.github.com/users/${username} > /dev/null || (echo "Invalid GitHub username or token" && exit 1)`,
+            // Store credentials
             `git config --global credential.helper store`,
             `echo "https://${username}:${token}@github.com" > ~/.git-credentials`,
             `chmod 600 ~/.git-credentials`
-        ]
+        ];
         await ssh.runSequential(commands)
         await db.insert(githubAuths).values({
             vpsId:vpsId,

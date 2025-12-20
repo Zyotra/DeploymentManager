@@ -68,7 +68,7 @@ const routes: apiRoute[] = [
         isProtected:true
     },{
         path:"/authenticate-github/:id",
-        method:'get',
+        method:'post',
         handler:authenticateGithubController,
         isProtected:true
     },{
