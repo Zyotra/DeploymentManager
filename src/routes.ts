@@ -11,6 +11,13 @@ import viewDetails from "./controllers/Machines/viewDetails";
 import authenticateGithubController from "./controllers/Github/authenticateGithubController";
 import unauthenticateGithubController from "./controllers/Github/unauthenticateGithubController";
 import getGithubStatusController from "./controllers/Github/getGithubStatusController";
+import createSwapMemoryController from "./controllers/createSwapMemoryController";
+import stopRedisController from "./controllers/stopRedisController";
+import startRedisController from "./controllers/startRedisController";
+import stopPostgresController from "./controllers/stopPostgresController";
+import startPostgresController from "./controllers/startPostgresController";
+import stopMySQLController from "./controllers/stopMySQLController";
+import startMySQLController from "./controllers/startMySQLController";
 
 const routes: apiRoute[] = [
     {
@@ -77,9 +84,44 @@ const routes: apiRoute[] = [
         handler:unauthenticateGithubController,
         isProtected:true
     },{
-        path:"get-github-auths/:id",
+        path:"/get-github-auths/:id",
         method:'get',
         handler:getGithubStatusController,
+        isProtected:true
+    },{
+        path:"/create-swap-memory",
+        method:"post",
+        handler:createSwapMemoryController,
+        isProtected:true
+    },{
+        path:"/stop-redis/:id",
+        method:"get",
+        handler:stopRedisController,
+        isProtected:true
+    },{
+        path:"/start-redis/:id",
+        method:"get",
+        handler:startRedisController,
+        isProtected:true
+    },{
+        path:"/stop-postgres/:id",
+        method:"get",
+        handler:stopPostgresController,
+        isProtected:true
+    },{
+        path:"/start-postgres/:id",
+        method:"get",
+        handler:startPostgresController,
+        isProtected:true
+    },{
+        path:"/stop-mysql/:id",
+        method:"get",
+        handler:stopMySQLController,
+        isProtected:true
+    },{
+        path:"/start-mysql/:id",
+        method:"get",
+        handler:startMySQLController,
         isProtected:true
     }
 ]
